@@ -32,8 +32,9 @@ const routes =[
 ]
 //创建router
 const router = new VueRouter({
-  routes:'',
+  routes,
   mode: 'history'
 })
+
 
 export default router

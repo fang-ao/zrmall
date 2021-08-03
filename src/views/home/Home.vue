@@ -1,17 +1,29 @@
 <template>
   <div id="home">
-    <h2>首页</h2>
-    <nav-bar><div slot="center">购物街</div></nav-bar>
+    <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
   </div>
 </template>
 
 <script>
 import NavBar from "../../components/common/navbar/NavBar";
+import {getHomeMultidata} from "../../network/home";
 
 export default {
   name: "Home",
   components: {
     NavBar
+  },
+  data(){
+    return{
+      banner:[],
+      recommends:[]
+    }
+  },
+  created() {
+    getHomeMultidata().then(res=>{
+      this.banner = res.data.banner.list;
+      this.recommends = res.data.recommend.list;
+    })
   }
 }
 </script>
